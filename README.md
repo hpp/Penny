@@ -43,7 +43,7 @@ Lets put in #s for x and y, say 500 and 600. We know 500 iterations of f(z) = z^
 
 The problem is the inverse iterative method blows up as squareRoot(f(z)-c) has two solutions [z=squareRoot(f(z)-c), and z=-squareRoot(f(z)-c), so to calculate y after 500 itereations would generate 2^100 # of solutions. Not to mention how many calculations (2^100)*100!. So for large differences in x and y we calculate j from f(z)=z^2+Cj;
 
-There is another solution. If we know we are zooming in between x and y we can save z for x at Cy when y = x.
+There is another solution. If we know we are zooming in between x and y we can save z for x at Cy when y = x. Hence y can hold a reference to x which is more important to j then the current x.
 
 Anyway we are looping back into ourselves here. And it is very important, because these solutions have very wide bearing impacts on sound and music perception. When measuring a signal in terms of roughness. Roughness being a measure of how much change there is in the signal. Take the coase line of Britain as an example. When measured with a yard stick the coast line is measured to be shorter then if it is measured with a foot ruler. Similarly songs have more bits of information if they are measrued at higher sampling frequencies. If we quantify a song as a measure of roughness or a series of roughness measurements we can calculate compression optimizations and clasification of rifts and tracks into bpm, genre, instumentation, etc.
 
