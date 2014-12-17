@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <scenes>
+        <!--Penny View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PennyViewController" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gil-ku-y76"/>
+                        <viewControllerLayoutGuide type="bottom" id="3h6-fb-VJ6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Capture">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="req-pQ-fhK">
+                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="28" y="493" width="51" height="31"/>
+                                </variation>
+                            </switch>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atm-iO-cUJ" userLabel="AVButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="od1-yp-doA"/>
+                                    <constraint firstAttribute="width" constant="50" id="wYM-vj-pOM"/>
+                                </constraints>
+                                <state key="normal" image="AVButtonVideo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="od1-yp-doA"/>
+                                        <exclude reference="wYM-vj-pOM"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="108" y="496" width="50" height="25"/>
+                                    <mask key="constraints">
+                                        <include reference="od1-yp-doA"/>
+                                        <include reference="wYM-vj-pOM"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="AVButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="koO-bo-9I5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGq-sP-gxH" userLabel="CaptureButton" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="125" y="315" width="71" height="67"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <state key="normal" image="CaptureButton">
+                                    <color key="titleColor" red="0.40599084279738662" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="166" y="472" width="68" height="74"/>
+                                </variation>
+                                <connections>
+                                    <action selector="captureButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xOc-2F-bya"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Atm-iO-cUJ" firstAttribute="centerY" secondItem="yGq-sP-gxH" secondAttribute="centerY" constant="-0.5" id="7Dd-Df-3jo"/>
+                            <constraint firstAttribute="centerX" secondItem="yGq-sP-gxH" secondAttribute="centerX" id="Qeh-QL-XdJ"/>
+                            <constraint firstItem="yGq-sP-gxH" firstAttribute="leading" secondItem="Atm-iO-cUJ" secondAttribute="trailing" constant="8" id="TQD-nc-ONP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="req-pQ-fhK"/>
+                                <exclude reference="Atm-iO-cUJ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Qeh-QL-XdJ"/>
+                                <exclude reference="TQD-nc-ONP"/>
+                                <exclude reference="7Dd-Df-3jo"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="req-pQ-fhK"/>
+                                <include reference="Atm-iO-cUJ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Qeh-QL-XdJ"/>
+                                <include reference="TQD-nc-ONP"/>
+                                <include reference="7Dd-Df-3jo"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="AVButton" destination="Atm-iO-cUJ" id="agn-ce-uDl"/>
+                        <outlet property="captureButton" destination="yGq-sP-gxH" id="ZWz-Di-E7V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93" y="156"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AVButtonVideo" width="96" height="48"/>
+        <image name="CaptureButton" width="50" height="50"/>
+    </resources>
+</document>

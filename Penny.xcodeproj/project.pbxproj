@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		433710031A3BB86F00D905A0 /* RosyWriterCapturePipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 43370FED1A3BB86F00D905A0 /* RosyWriterCapturePipeline.m */; };
+		433710071A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 43370FF51A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.m */; };
+		433710091A3BB86F00D905A0 /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = 43370FFB1A3BB86F00D905A0 /* matrix.c */; };
+		4337100A1A3BB86F00D905A0 /* ShaderUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 43370FFD1A3BB86F00D905A0 /* ShaderUtilities.c */; };
+		4337100B1A3BB86F00D905A0 /* MovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 433710001A3BB86F00D905A0 /* MovieRecorder.m */; };
+		4337100C1A3BB86F00D905A0 /* OpenGLPixelBufferView.m in Sources */ = {isa = PBXBuildFile; fileRef = 433710021A3BB86F00D905A0 /* OpenGLPixelBufferView.m */; };
+		4337101B1A3BC70F00D905A0 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4337100F1A3BC70F00D905A0 /* CoreImage.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		4337101C1A3BC70F00D905A0 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710101A3BC70F00D905A0 /* AssetsLibrary.framework */; };
+		4337101D1A3BC70F00D905A0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710111A3BC70F00D905A0 /* AVFoundation.framework */; };
+		4337101E1A3BC70F00D905A0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710121A3BC70F00D905A0 /* CoreGraphics.framework */; };
+		4337101F1A3BC70F00D905A0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710131A3BC70F00D905A0 /* CoreMedia.framework */; };
+		433710201A3BC70F00D905A0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710141A3BC70F00D905A0 /* CoreMotion.framework */; };
+		433710211A3BC70F00D905A0 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710151A3BC70F00D905A0 /* CoreVideo.framework */; };
+		433710221A3BC70F00D905A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710161A3BC70F00D905A0 /* Foundation.framework */; };
+		433710231A3BC70F00D905A0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710171A3BC70F00D905A0 /* ImageIO.framework */; };
+		433710241A3BC70F00D905A0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710181A3BC70F00D905A0 /* OpenGLES.framework */; };
+		433710251A3BC70F00D905A0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433710191A3BC70F00D905A0 /* QuartzCore.framework */; };
+		433710261A3BC70F00D905A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4337101A1A3BC70F00D905A0 /* UIKit.framework */; };
+		43C17DEE1A2B887D00103306 /* PennyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DED1A2B887D00103306 /* PennyAppDelegate.swift */; };
+		43C17DF11A2B887D00103306 /* Penny.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DEF1A2B887D00103306 /* Penny.xcdatamodeld */; };
+		43C17DF31A2B887D00103306 /* PennyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DF21A2B887D00103306 /* PennyViewController.swift */; };
+		43C17DF61A2B887D00103306 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C17DF41A2B887D00103306 /* Main.storyboard */; };
+		43C17DF81A2B887D00103306 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C17DF71A2B887D00103306 /* Images.xcassets */; };
+		43C17DFB1A2B887D00103306 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C17DF91A2B887D00103306 /* LaunchScreen.xib */; };
+		43C17E071A2B887D00103306 /* PennyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17E061A2B887D00103306 /* PennyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		43C17E011A2B887D00103306 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 43C17DE01A2B887D00103306 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 43C17DE71A2B887D00103306;
+			remoteInfo = Penny;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43370FEC1A3BB86F00D905A0 /* RosyWriterCapturePipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterCapturePipeline.h; sourceTree = "<group>"; };
+		43370FED1A3BB86F00D905A0 /* RosyWriterCapturePipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterCapturePipeline.m; sourceTree = "<group>"; };
+		43370FF41A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterOpenGLRenderer.h; sourceTree = "<group>"; };
+		43370FF51A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterOpenGLRenderer.m; sourceTree = "<group>"; };
+		43370FF61A3BB86F00D905A0 /* RosyWriterRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterRenderer.h; sourceTree = "<group>"; };
+		43370FFB1A3BB86F00D905A0 /* matrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = matrix.c; sourceTree = "<group>"; };
+		43370FFC1A3BB86F00D905A0 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		43370FFD1A3BB86F00D905A0 /* ShaderUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ShaderUtilities.c; sourceTree = "<group>"; };
+		43370FFE1A3BB86F00D905A0 /* ShaderUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderUtilities.h; sourceTree = "<group>"; };
+		43370FFF1A3BB86F00D905A0 /* MovieRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieRecorder.h; sourceTree = "<group>"; };
+		433710001A3BB86F00D905A0 /* MovieRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieRecorder.m; sourceTree = "<group>"; };
+		433710011A3BB86F00D905A0 /* OpenGLPixelBufferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLPixelBufferView.h; sourceTree = "<group>"; };
+		433710021A3BB86F00D905A0 /* OpenGLPixelBufferView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLPixelBufferView.m; sourceTree = "<group>"; };
+		4337100E1A3BC3AC00D905A0 /* -Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "-Bridging-Header.h"; path = "../-Bridging-Header.h"; sourceTree = "<group>"; };
+		4337100F1A3BC70F00D905A0 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		433710101A3BC70F00D905A0 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		433710111A3BC70F00D905A0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		433710121A3BC70F00D905A0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		433710131A3BC70F00D905A0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		433710141A3BC70F00D905A0 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		433710151A3BC70F00D905A0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		433710161A3BC70F00D905A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		433710171A3BC70F00D905A0 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		433710181A3BC70F00D905A0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		433710191A3BC70F00D905A0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4337101A1A3BC70F00D905A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		43C17DE81A2B887D00103306 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C17DEC1A2B887D00103306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43C17DED1A2B887D00103306 /* PennyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyAppDelegate.swift; sourceTree = "<group>"; };
+		43C17DF01A2B887D00103306 /* Penny.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Penny.xcdatamodel; sourceTree = "<group>"; };
+		43C17DF21A2B887D00103306 /* PennyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyViewController.swift; sourceTree = "<group>"; };
+		43C17DF51A2B887D00103306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		43C17DF71A2B887D00103306 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		43C17DFA1A2B887D00103306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		43C17E001A2B887D00103306 /* PennyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PennyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		43C17E051A2B887D00103306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43C17E061A2B887D00103306 /* PennyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		43C17DE51A2B887D00103306 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4337101B1A3BC70F00D905A0 /* CoreImage.framework in Frameworks */,
+				4337101C1A3BC70F00D905A0 /* AssetsLibrary.framework in Frameworks */,
+				4337101D1A3BC70F00D905A0 /* AVFoundation.framework in Frameworks */,
+				4337101E1A3BC70F00D905A0 /* CoreGraphics.framework in Frameworks */,
+				4337101F1A3BC70F00D905A0 /* CoreMedia.framework in Frameworks */,
+				433710201A3BC70F00D905A0 /* CoreMotion.framework in Frameworks */,
+				433710211A3BC70F00D905A0 /* CoreVideo.framework in Frameworks */,
+				433710221A3BC70F00D905A0 /* Foundation.framework in Frameworks */,
+				433710231A3BC70F00D905A0 /* ImageIO.framework in Frameworks */,
+				433710241A3BC70F00D905A0 /* OpenGLES.framework in Frameworks */,
+				433710251A3BC70F00D905A0 /* QuartzCore.framework in Frameworks */,
+				433710261A3BC70F00D905A0 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C17DFD1A2B887D00103306 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43370FF91A3BB86F00D905A0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				43370FFA1A3BB86F00D905A0 /* GL */,
+				43370FFF1A3BB86F00D905A0 /* MovieRecorder.h */,
+				433710001A3BB86F00D905A0 /* MovieRecorder.m */,
+				433710011A3BB86F00D905A0 /* OpenGLPixelBufferView.h */,
+				433710021A3BB86F00D905A0 /* OpenGLPixelBufferView.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		43370FFA1A3BB86F00D905A0 /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				43370FFB1A3BB86F00D905A0 /* matrix.c */,
+				43370FFC1A3BB86F00D905A0 /* matrix.h */,
+				43370FFD1A3BB86F00D905A0 /* ShaderUtilities.c */,
+				43370FFE1A3BB86F00D905A0 /* ShaderUtilities.h */,
+			);
+			path = GL;
+			sourceTree = "<group>";
+		};
+		4337100D1A3BB87F00D905A0 /* RosyWriter */ = {
+			isa = PBXGroup;
+			children = (
+				43370FEC1A3BB86F00D905A0 /* RosyWriterCapturePipeline.h */,
+				43370FED1A3BB86F00D905A0 /* RosyWriterCapturePipeline.m */,
+				43370FF41A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.h */,
+				43370FF51A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.m */,
+				43370FF61A3BB86F00D905A0 /* RosyWriterRenderer.h */,
+				43370FF91A3BB86F00D905A0 /* Utilities */,
+			);
+			name = RosyWriter;
+			sourceTree = "<group>";
+		};
+		433710271A3BC72400D905A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4337100F1A3BC70F00D905A0 /* CoreImage.framework */,
+				433710101A3BC70F00D905A0 /* AssetsLibrary.framework */,
+				433710111A3BC70F00D905A0 /* AVFoundation.framework */,
+				433710121A3BC70F00D905A0 /* CoreGraphics.framework */,
+				433710131A3BC70F00D905A0 /* CoreMedia.framework */,
+				433710141A3BC70F00D905A0 /* CoreMotion.framework */,
+				433710151A3BC70F00D905A0 /* CoreVideo.framework */,
+				433710161A3BC70F00D905A0 /* Foundation.framework */,
+				433710171A3BC70F00D905A0 /* ImageIO.framework */,
+				433710181A3BC70F00D905A0 /* OpenGLES.framework */,
+				433710191A3BC70F00D905A0 /* QuartzCore.framework */,
+				4337101A1A3BC70F00D905A0 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		43C17DDF1A2B887D00103306 = {
+			isa = PBXGroup;
+			children = (
+				43C17DEA1A2B887D00103306 /* Penny */,
+				43C17E031A2B887D00103306 /* PennyTests */,
+				433710271A3BC72400D905A0 /* Frameworks */,
+				43C17DE91A2B887D00103306 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		43C17DE91A2B887D00103306 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				43C17DE81A2B887D00103306 /* Penny.app */,
+				43C17E001A2B887D00103306 /* PennyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		43C17DEA1A2B887D00103306 /* Penny */ = {
+			isa = PBXGroup;
+			children = (
+				43C17DED1A2B887D00103306 /* PennyAppDelegate.swift */,
+				43C17DF21A2B887D00103306 /* PennyViewController.swift */,
+				4337100E1A3BC3AC00D905A0 /* -Bridging-Header.h */,
+				4337100D1A3BB87F00D905A0 /* RosyWriter */,
+				43C17DF41A2B887D00103306 /* Main.storyboard */,
+				43C17DF71A2B887D00103306 /* Images.xcassets */,
+				43C17DF91A2B887D00103306 /* LaunchScreen.xib */,
+				43C17DEF1A2B887D00103306 /* Penny.xcdatamodeld */,
+				43C17DEB1A2B887D00103306 /* Supporting Files */,
+			);
+			path = Penny;
+			sourceTree = "<group>";
+		};
+		43C17DEB1A2B887D00103306 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43C17DEC1A2B887D00103306 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43C17E031A2B887D00103306 /* PennyTests */ = {
+			isa = PBXGroup;
+			children = (
+				43C17E061A2B887D00103306 /* PennyTests.swift */,
+				43C17E041A2B887D00103306 /* Supporting Files */,
+			);
+			path = PennyTests;
+			sourceTree = "<group>";
+		};
+		43C17E041A2B887D00103306 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				43C17E051A2B887D00103306 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		43C17DE71A2B887D00103306 /* Penny */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43C17E0A1A2B887D00103306 /* Build configuration list for PBXNativeTarget "Penny" */;
+			buildPhases = (
+				43C17DE41A2B887D00103306 /* Sources */,
+				43C17DE51A2B887D00103306 /* Frameworks */,
+				43C17DE61A2B887D00103306 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Penny;
+			productName = Penny;
+			productReference = 43C17DE81A2B887D00103306 /* Penny.app */;
+			productType = "com.apple.product-type.application";
+		};
+		43C17DFF1A2B887D00103306 /* PennyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43C17E0D1A2B887D00103306 /* Build configuration list for PBXNativeTarget "PennyTests" */;
+			buildPhases = (
+				43C17DFC1A2B887D00103306 /* Sources */,
+				43C17DFD1A2B887D00103306 /* Frameworks */,
+				43C17DFE1A2B887D00103306 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				43C17E021A2B887D00103306 /* PBXTargetDependency */,
+			);
+			name = PennyTests;
+			productName = PennyTests;
+			productReference = 43C17E001A2B887D00103306 /* PennyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		43C17DE01A2B887D00103306 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Harmonic Processes";
+				TargetAttributes = {
+					43C17DE71A2B887D00103306 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					43C17DFF1A2B887D00103306 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 43C17DE71A2B887D00103306;
+					};
+				};
+			};
+			buildConfigurationList = 43C17DE31A2B887D00103306 /* Build configuration list for PBXProject "Penny" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 43C17DDF1A2B887D00103306;
+			productRefGroup = 43C17DE91A2B887D00103306 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				43C17DE71A2B887D00103306 /* Penny */,
+				43C17DFF1A2B887D00103306 /* PennyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		43C17DE61A2B887D00103306 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C17DF61A2B887D00103306 /* Main.storyboard in Resources */,
+				43C17DFB1A2B887D00103306 /* LaunchScreen.xib in Resources */,
+				43C17DF81A2B887D00103306 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C17DFE1A2B887D00103306 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		43C17DE41A2B887D00103306 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				433710091A3BB86F00D905A0 /* matrix.c in Sources */,
+				4337100A1A3BB86F00D905A0 /* ShaderUtilities.c in Sources */,
+				43C17DF31A2B887D00103306 /* PennyViewController.swift in Sources */,
+				43C17DF11A2B887D00103306 /* Penny.xcdatamodeld in Sources */,
+				433710071A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.m in Sources */,
+				433710031A3BB86F00D905A0 /* RosyWriterCapturePipeline.m in Sources */,
+				4337100C1A3BB86F00D905A0 /* OpenGLPixelBufferView.m in Sources */,
+				4337100B1A3BB86F00D905A0 /* MovieRecorder.m in Sources */,
+				43C17DEE1A2B887D00103306 /* PennyAppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43C17DFC1A2B887D00103306 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43C17E071A2B887D00103306 /* PennyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		43C17E021A2B887D00103306 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 43C17DE71A2B887D00103306 /* Penny */;
+			targetProxy = 43C17E011A2B887D00103306 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		43C17DF41A2B887D00103306 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43C17DF51A2B887D00103306 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		43C17DF91A2B887D00103306 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43C17DFA1A2B887D00103306 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		43C17E081A2B887D00103306 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43C17E091A2B887D00103306 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43C17E0B1A2B887D00103306 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Penny/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		43C17E0C1A2B887D00103306 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Penny/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		43C17E0E1A2B887D00103306 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PennyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Penny.app/Penny";
+			};
+			name = Debug;
+		};
+		43C17E0F1A2B887D00103306 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PennyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Penny.app/Penny";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		43C17DE31A2B887D00103306 /* Build configuration list for PBXProject "Penny" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43C17E081A2B887D00103306 /* Debug */,
+				43C17E091A2B887D00103306 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43C17E0A1A2B887D00103306 /* Build configuration list for PBXNativeTarget "Penny" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43C17E0B1A2B887D00103306 /* Debug */,
+				43C17E0C1A2B887D00103306 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43C17E0D1A2B887D00103306 /* Build configuration list for PBXNativeTarget "PennyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				43C17E0E1A2B887D00103306 /* Debug */,
+				43C17E0F1A2B887D00103306 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		43C17DEF1A2B887D00103306 /* Penny.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				43C17DF01A2B887D00103306 /* Penny.xcdatamodel */,
+			);
+			currentVersion = 43C17DF01A2B887D00103306 /* Penny.xcdatamodel */;
+			path = Penny.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 43C17DE01A2B887D00103306 /* Project object */;
+}
