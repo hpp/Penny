@@ -5,7 +5,7 @@ penelopefree for iOS, Penny v2.0 if you will. v3.0 will come out for Android as 
 
 Penny v2.0 is a basic iOS app (rosywriter) with shaders brought shared from PenelopeFree for Android (Penny v1.0). Penny was never released with an active Julia Dream on Android. As presale status resumes $10/month steady. => 6,000 install, and 400 active users, ~= 60 owners of PenelopeFull.
 
-Projected sales for 2015 18,000 iOS installs, 1,200 active users, and 1,800 owners of PenelopeFull = $100/month.
+Projected sales for 2015 18,000 iOS installs, 1,200 active users, and 1,800 owners of PenelopeFull = $300/month.
 
 Swift Tutorial 101 for advanced users:
 
