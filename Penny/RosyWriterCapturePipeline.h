@@ -54,6 +54,7 @@
 @interface RosyWriterCapturePipeline : NSObject 
 
 - (void)setDelegate:(id<RosyWriterCapturePipelineDelegate>)delegate callbackQueue:(dispatch_queue_t)delegateCallbackQueue; // delegate is weak referenced
+- (id<RosyWriterCapturePipelineDelegate>)delegate;
 
 // These methods are synchronous
 - (void)startRunning;

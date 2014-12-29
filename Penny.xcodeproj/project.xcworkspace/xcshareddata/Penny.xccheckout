@@ -10,24 +10,36 @@
 	<string>Penny</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0B22F2020D4BC1C43EEDB6B7C549BF66AA72F5DE</key>
+		<string>http://github.com/hpp/Penny</string>
 		<key>31E2DC538DF7A83E14C59A4B0A8C6641FB697171</key>
 		<string>https://github.com/samonderous/cameo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Penny/Penny.xcodeproj</string>
+	<string>Penny.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>0B22F2020D4BC1C43EEDB6B7C549BF66AA72F5DE</key>
+		<string>../..</string>
 		<key>31E2DC538DF7A83E14C59A4B0A8C6641FB697171</key>
-		<string>../../..</string>
+		<string>../../../workspace</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/samonderous/cameo.git</string>
+	<string>http://github.com/hpp/Penny</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>31E2DC538DF7A83E14C59A4B0A8C6641FB697171</string>
+	<string>0B22F2020D4BC1C43EEDB6B7C549BF66AA72F5DE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0B22F2020D4BC1C43EEDB6B7C549BF66AA72F5DE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Penny</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

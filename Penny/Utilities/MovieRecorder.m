@@ -111,7 +111,7 @@ typedef NS_ENUM( NSInteger, MovieRecorderStatus ) {
 	if ( self ) {
 		_writingQueue = dispatch_queue_create( "com.apple.sample.movierecorder.writing", DISPATCH_QUEUE_SERIAL );
 		_videoTrackTransform = CGAffineTransformIdentity;
-		//_URL = [URL retain];
+		_URL = URL;
 	}
 	return self;
 }
@@ -185,7 +185,7 @@ typedef NS_ENUM( NSInteger, MovieRecorderStatus ) {
 		_delegate = delegate; // unnecessary under ARC, just assign to _delegate directly
 		if ( delegateCallbackQueue != _delegateCallbackQueue  ) {
 			//[_delegateCallbackQueue release];
-			//_delegateCallbackQueue = [delegateCallbackQueue retain];
+			_delegateCallbackQueue = delegateCallbackQueue;
 		}
 	}
 }

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegate {
+class PennyViewController: UIViewController, RosyWriterCapturePipelineDelegate {
     
     let captureSession = AVCaptureSession()
 
@@ -29,44 +29,51 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
     var capturePipeline : RosyWriterCapturePipeline?
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         buttonArray = [captureButton, AVButton]
         
+        /*
         checkAVCaptureDevices();
         storeCaptureDevice();
         
         if captureDevice != nil {
             beginSession()
         }
+        */
         
         capturePipeline = RosyWriterCapturePipeline()
-        //capturePipeline?.setDelegate(callBackQueue:dispatch_get_main_queue());
-        //NSNotificationCenter.defaultCenter(self)
+        capturePipeline?.setDelegate(self, callbackQueue:dispatch_get_main_queue());
         
-/*
-        selector:@selector(applicationDidEnterBackground)
-        name:UIApplicationDidEnterBackgroundNotification
-        object:[UIApplication sharedApplication]];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(applicationWillEnterForeground)
-        name:UIApplicationWillEnterForegroundNotification
-        object:[UIApplication sharedApplication]];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(deviceOrientationDidChange)
-        name:UIDeviceOrientationDidChangeNotification
-        object:[UIDevice currentDevice]];
-  
         // Keep track of changes to the device orientation so we can update the capture pipeline
-        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
         
-        _addedObservers = YES;
+        _addedObservers = true
+        _recording = false
         
         // the willEnterForeground and didEnterBackground notifications are subsequently used to update _allowedToUseGPU
-        _allowedToUseGPU = ( [UIApplication sharedApplication].applicationState != UIApplicationStateBackground );
-        self.capturePipeline.renderingEnabled = _allowedToUseGPU;
+        _allowedToUseGPU = ( UIApplication.sharedApplication().applicationState != UIApplicationState.Background )
+        self.capturePipeline?.renderingEnabled = _allowedToUseGPU!
         
-        [super viewDidLoad];
-*/
+        
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated:Bool){
+        
+        super.viewWillAppear(animated)
+    
+        capturePipeline?.startRunning()
+    
+        //Maybe replace labelTimer with note
+        //labelTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector:updateLabels, userInfo:nil, repeats:true)
+    }
+    
+    override func viewDidDisappear(animated:Bool) {
+        super.viewDidDisappear(animated)
+    
+        //[self.labelTimer invalidate];
+        //self.labelTimer = nil;
+    
+        capturePipeline?.stopRunning()
     }
     
     
@@ -101,7 +108,7 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
         }
     }
    
-    
+    /*
     func beginSession(){
         var err : NSError? = nil
         captureSession.addInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
@@ -130,6 +137,9 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
         //captureButton.setImage(UIImage(named: "CaptureButton"), forState:UIControlState.Normal)
         popButtons()
     }
+    */
+    
+
     
     func setupPreviewView(){
         // Set up GL view
@@ -146,20 +156,10 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
         self.previewView?.center = CGPointMake(self.view.bounds.size.width/2.0, self.view.bounds.size.height/2.0)
     }
     
-    func testFunc(inout optionalParam: Bool? = NilLiteralConvertible.self) {
-        if (optionalParam != nil) {
-            //...
-        }
-    }
-   
-    
     func startPreview() {
         self.view.layer.addSublayer(previewLayer)
         popButtons()
         
-        var cabage : Bool? = nil
-        testFunc(optionalParam: &cabage)
-        testFunc()
     }
     
     func endPreivew() {
@@ -185,16 +185,21 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
     
     
     @IBAction func captureButtonPressed(sender: AnyObject) {
-        if captureButton.imageForState(UIControlState.Normal) == UIImage(named: "CaptureButton") {
-            //captureButton.setTitle("Stop",forState: UIControlState.Normal)
-            captureButton.setImage(UIImage(named: "StopButton"), forState:UIControlState.Normal)
-            
-        } else {
-            //captureButton.setTitle("Capture", forState: UIControlState.Normal)
+        if ( _recording! ) {
+            capturePipeline?.stopRecording()
             captureButton.setImage(UIImage(named: "CaptureButton"), forState:UIControlState.Normal)
+        } else {
+            // Disable the idle timer while recording
+            UIApplication.sharedApplication().idleTimerDisabled = true
             
+            // Make sure we have time to finish saving the movie if the app is backgrounded during recording
+            _backgroundRecordingID = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({})
+            
+            captureButton.enabled = false; // re-enabled once recording has finished starting
+            
+            capturePipeline?.startRecording()
+            captureButton.setImage(UIImage(named: "StopButton"), forState:UIControlState.Normal)
         }
-        
     }
     
     @IBAction func AVButtonPressed(sender: AnyObject) {
@@ -224,14 +229,19 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
         alertView.show()
     }
     
-    func capturePipeline(capturePipeline: RosyWriterCapturePipeline, error: NSError) {
+    
+    
+
+    
+    
+    func capturePipeline(capturePipeline: RosyWriterCapturePipeline, didStopRunningWithError error: NSError) {
         
         showError(error)
         captureButton.enabled = false;
     }
 
     // Preview
-    func capturePipeline(capturePipline: RosyWriterCapturePipeline,  previewPixelBuffer: CVPixelBufferRef) {
+    func capturePipeline(capturePipline: RosyWriterCapturePipeline, previewPixelBufferReadyForDisplay previewPixelBuffer: CVPixelBufferRef) {
     
         if (( _allowedToUseGPU ) == nil) {
             return
@@ -244,7 +254,9 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
         previewView?.displayPixelBuffer(previewPixelBuffer)
     }
     
-    func capturePipelineDidRunOutOfPreviewBuffers(capturePipelin:RosyWriterCapturePipeline) {
+
+    
+    func capturePipelineDidRunOutOfPreviewBuffers(capturePipeline:RosyWriterCapturePipeline) {
         if ( _allowedToUseGPU == nil ) {
             self.previewView?.flushPixelBufferCache
         }
@@ -252,6 +264,7 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
     
     // Recording
     func capturePipelineRecordingDidStart(capturePipeline:RosyWriterCapturePipeline) {
+        _recording = true;
         self.captureButton.enabled = true
     }
     
@@ -272,6 +285,8 @@ class PennyViewController: UIViewController{//, RosyWriterCapturePipelineDelegat
     }
     
 }
+
+
 
 extension AVCaptureVideoOrientation {
     var uiInterfaceOrientation: UIInterfaceOrientation {
