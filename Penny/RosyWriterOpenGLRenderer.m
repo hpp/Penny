@@ -325,8 +325,23 @@ bail:
         "position", "texturecoordinate",
     };
     
-    const GLchar *vertSrc = [RosyWriterOpenGLRenderer readFile:@"myFilter.vsh"];
-    const GLchar *fragSrc = [RosyWriterOpenGLRenderer readFile:@"myFilter.fsh"];
+    int filterType = 1;
+    const GLchar *vertSrc;
+    const GLchar *fragSrc;
+    switch ( filterType ) {
+        case 0:
+            vertSrc = [RosyWriterOpenGLRenderer readFile:@"myFilter.vsh"];
+            fragSrc = [RosyWriterOpenGLRenderer readFile:@"myFilter.fsh"];
+            break;
+        case 1:
+            vertSrc = [RosyWriterOpenGLRenderer readFile:@"sorbelFilter.vsh"];
+            fragSrc = [RosyWriterOpenGLRenderer readFile:@"sorbelFilter.fsh"];
+            break;
+        default:
+            NSLog( @"Error selecting OpenGL Filter, no case found for %i", filterType);
+    }
+    
+    
     
     // shader program
 	glueCreateProgram( vertSrc, fragSrc,  

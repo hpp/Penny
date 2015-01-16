@@ -27,8 +27,9 @@
 		433710261A3BC70F00D905A0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4337101A1A3BC70F00D905A0 /* UIKit.framework */; };
 		433710291A51F1B300D905A0 /* myFilter.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 433710281A51F1B300D905A0 /* myFilter.fsh */; };
 		4337102B1A51F1C300D905A0 /* myFilter.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 4337102A1A51F1C300D905A0 /* myFilter.vsh */; };
-		4337102E1A52088500D905A0 /* sorbelJulia.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4337102C1A52088500D905A0 /* sorbelJulia.fsh */; };
+		4337102E1A52088500D905A0 /* sorbelFilter.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4337102C1A52088500D905A0 /* sorbelFilter.fsh */; };
 		4337102F1A52088500D905A0 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4337102D1A52088500D905A0 /* TemplateIcon2x.png */; };
+		433710311A52398D00D905A0 /* sorbelFilter.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 433710301A52398D00D905A0 /* sorbelFilter.vsh */; };
 		43C17DEE1A2B887D00103306 /* PennyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DED1A2B887D00103306 /* PennyAppDelegate.swift */; };
 		43C17DF11A2B887D00103306 /* Penny.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DEF1A2B887D00103306 /* Penny.xcdatamodeld */; };
 		43C17DF31A2B887D00103306 /* PennyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DF21A2B887D00103306 /* PennyViewController.swift */; };
@@ -77,8 +78,9 @@
 		4337101A1A3BC70F00D905A0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		433710281A51F1B300D905A0 /* myFilter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = myFilter.fsh; sourceTree = "<group>"; };
 		4337102A1A51F1C300D905A0 /* myFilter.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = myFilter.vsh; sourceTree = "<group>"; };
-		4337102C1A52088500D905A0 /* sorbelJulia.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sorbelJulia.fsh; sourceTree = "<group>"; };
+		4337102C1A52088500D905A0 /* sorbelFilter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sorbelFilter.fsh; sourceTree = "<group>"; };
 		4337102D1A52088500D905A0 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		433710301A52398D00D905A0 /* sorbelFilter.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sorbelFilter.vsh; sourceTree = "<group>"; };
 		43C17DE81A2B887D00103306 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C17DEC1A2B887D00103306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C17DED1A2B887D00103306 /* PennyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyAppDelegate.swift; sourceTree = "<group>"; };
@@ -137,13 +139,14 @@
 		43370FFA1A3BB86F00D905A0 /* GL */ = {
 			isa = PBXGroup;
 			children = (
-				433710281A51F1B300D905A0 /* myFilter.fsh */,
 				4337102A1A51F1C300D905A0 /* myFilter.vsh */,
+				433710281A51F1B300D905A0 /* myFilter.fsh */,
+				433710301A52398D00D905A0 /* sorbelFilter.vsh */,
+				4337102C1A52088500D905A0 /* sorbelFilter.fsh */,
 				43370FFB1A3BB86F00D905A0 /* matrix.c */,
 				43370FFC1A3BB86F00D905A0 /* matrix.h */,
 				43370FFD1A3BB86F00D905A0 /* ShaderUtilities.c */,
 				43370FFE1A3BB86F00D905A0 /* ShaderUtilities.h */,
-				4337102C1A52088500D905A0 /* sorbelJulia.fsh */,
 				4337102D1A52088500D905A0 /* TemplateIcon2x.png */,
 			);
 			path = GL;
@@ -326,7 +329,8 @@
 				4337102B1A51F1C300D905A0 /* myFilter.vsh in Resources */,
 				43C17DFB1A2B887D00103306 /* LaunchScreen.xib in Resources */,
 				43C17DF81A2B887D00103306 /* Images.xcassets in Resources */,
-				4337102E1A52088500D905A0 /* sorbelJulia.fsh in Resources */,
+				433710311A52398D00D905A0 /* sorbelFilter.vsh in Resources */,
+				4337102E1A52088500D905A0 /* sorbelFilter.fsh in Resources */,
 				433710291A51F1B300D905A0 /* myFilter.fsh in Resources */,
 				4337102F1A52088500D905A0 /* TemplateIcon2x.png in Resources */,
 			);
