@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Penny View Controller-->
@@ -17,49 +18,120 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="req-pQ-fhK">
-                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="28" y="493" width="51" height="31"/>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgB-5B-aYq" userLabel="AudioButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IgB-5B-aYq" secondAttribute="height" multiplier="1:2" id="nqz-zM-Hpm"/>
+                                </constraints>
+                                <state key="normal" image="AudioOff">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nqz-zM-Hpm"/>
+                                    </mask>
                                 </variation>
-                            </switch>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atm-iO-cUJ" userLabel="AVButton">
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="nqz-zM-Hpm"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="nqz-zM-Hpm"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="audioButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fVR-jt-EaM"/>
+                                </connections>
+                            </button>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atm-iO-cUJ" userLabel="AVButton">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="od1-yp-doA"/>
-                                    <constraint firstAttribute="width" constant="50" id="wYM-vj-pOM"/>
+                                    <constraint firstAttribute="width" secondItem="Atm-iO-cUJ" secondAttribute="height" multiplier="2:1" id="mpb-Vb-VOR"/>
                                 </constraints>
                                 <state key="normal" image="AVButtonVideo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="od1-yp-doA"/>
-                                        <exclude reference="wYM-vj-pOM"/>
+                                        <exclude reference="mpb-Vb-VOR"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="108" y="496" width="50" height="25"/>
+                                <variation key="heightClass=compact">
                                     <mask key="constraints">
-                                        <include reference="od1-yp-doA"/>
-                                        <include reference="wYM-vj-pOM"/>
+                                        <include reference="mpb-Vb-VOR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="mpb-Vb-VOR"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <action selector="AVButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="koO-bo-9I5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGq-sP-gxH" userLabel="CaptureButton" colorLabel="IBBuiltInLabel-Red">
-                                <rect key="frame" x="125" y="315" width="71" height="67"/>
+                            <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1W-2H-6vd" userLabel="PyramidButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="J1W-2H-6vd" secondAttribute="height" multiplier="1:1" id="Fbk-hb-aYk"/>
+                                </constraints>
+                                <state key="normal" image="PyramidClosed">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Fbk-hb-aYk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Fbk-hb-aYk"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Fbk-hb-aYk"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="pyramidButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5au-rF-u8N"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="redraw" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGq-sP-gxH" userLabel="CaptureButton" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="265" y="477" width="71" height="67"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yGq-sP-gxH" secondAttribute="height" multiplier="1:1" id="r9Q-OU-4YR"/>
+                                </constraints>
                                 <state key="normal" image="CaptureButton">
                                     <color key="titleColor" red="0.40599084279738662" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="166" y="472" width="68" height="74"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="r9Q-OU-4YR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="500" y="150" width="100" height="100"/>
+                                    <mask key="constraints">
+                                        <include reference="r9Q-OU-4YR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="r9Q-OU-4YR"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <action selector="captureButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xOc-2F-bya"/>
@@ -68,45 +140,88 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Atm-iO-cUJ" firstAttribute="centerY" secondItem="yGq-sP-gxH" secondAttribute="centerY" constant="-0.5" id="7Dd-Df-3jo"/>
-                            <constraint firstAttribute="centerX" secondItem="yGq-sP-gxH" secondAttribute="centerX" id="Qeh-QL-XdJ"/>
-                            <constraint firstItem="yGq-sP-gxH" firstAttribute="leading" secondItem="Atm-iO-cUJ" secondAttribute="trailing" constant="8" id="TQD-nc-ONP"/>
+                            <constraint firstItem="3h6-fb-VJ6" firstAttribute="top" secondItem="IgB-5B-aYq" secondAttribute="bottom" constant="14" id="1WH-nk-GVb"/>
+                            <constraint firstAttribute="centerX" secondItem="yGq-sP-gxH" secondAttribute="centerX" constant="-13" id="6x1-5d-wXE"/>
+                            <constraint firstItem="IgB-5B-aYq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8aD-pE-VDk"/>
+                            <constraint firstItem="3h6-fb-VJ6" firstAttribute="top" secondItem="yGq-sP-gxH" secondAttribute="bottom" constant="-6" id="Nxm-O8-KEo"/>
+                            <constraint firstItem="3h6-fb-VJ6" firstAttribute="top" secondItem="Atm-iO-cUJ" secondAttribute="bottom" constant="34" id="XNV-Tj-0aI"/>
+                            <constraint firstItem="3h6-fb-VJ6" firstAttribute="top" secondItem="J1W-2H-6vd" secondAttribute="bottom" constant="52" id="ccl-EK-t51"/>
+                            <constraint firstItem="yGq-sP-gxH" firstAttribute="leading" secondItem="Atm-iO-cUJ" secondAttribute="trailing" constant="13" id="cuq-IV-LlG"/>
+                            <constraint firstItem="IgB-5B-aYq" firstAttribute="centerY" secondItem="Atm-iO-cUJ" secondAttribute="centerY" id="d2D-vA-YhO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="J1W-2H-6vd" secondAttribute="trailing" constant="63" id="iuu-j4-VJd"/>
+                            <constraint firstItem="yGq-sP-gxH" firstAttribute="centerY" secondItem="Atm-iO-cUJ" secondAttribute="centerY" constant="10" id="m9U-gM-qxK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yGq-sP-gxH" secondAttribute="trailing" constant="-16" id="otQ-Ok-oHj"/>
+                            <constraint firstItem="Atm-iO-cUJ" firstAttribute="leading" secondItem="IgB-5B-aYq" secondAttribute="trailing" constant="14" id="pVM-mE-bbj"/>
+                            <constraint firstAttribute="centerY" secondItem="yGq-sP-gxH" secondAttribute="centerY" id="q74-EH-Amo"/>
+                            <constraint firstItem="J1W-2H-6vd" firstAttribute="leading" secondItem="yGq-sP-gxH" secondAttribute="trailing" constant="-4" id="wuv-Ec-Tvh"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="req-pQ-fhK"/>
+                                <exclude reference="IgB-5B-aYq"/>
                                 <exclude reference="Atm-iO-cUJ"/>
+                                <exclude reference="J1W-2H-6vd"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Qeh-QL-XdJ"/>
-                                <exclude reference="TQD-nc-ONP"/>
-                                <exclude reference="7Dd-Df-3jo"/>
+                                <exclude reference="1WH-nk-GVb"/>
+                                <exclude reference="Nxm-O8-KEo"/>
+                                <exclude reference="XNV-Tj-0aI"/>
+                                <exclude reference="ccl-EK-t51"/>
+                                <exclude reference="iuu-j4-VJd"/>
+                                <exclude reference="wuv-Ec-Tvh"/>
+                                <exclude reference="6x1-5d-wXE"/>
+                                <exclude reference="cuq-IV-LlG"/>
+                                <exclude reference="m9U-gM-qxK"/>
+                                <exclude reference="otQ-Ok-oHj"/>
+                                <exclude reference="q74-EH-Amo"/>
+                                <exclude reference="pVM-mE-bbj"/>
+                                <exclude reference="8aD-pE-VDk"/>
+                                <exclude reference="d2D-vA-YhO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="otQ-Ok-oHj"/>
+                                <include reference="q74-EH-Amo"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="req-pQ-fhK"/>
+                                <include reference="IgB-5B-aYq"/>
                                 <include reference="Atm-iO-cUJ"/>
+                                <include reference="J1W-2H-6vd"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Qeh-QL-XdJ"/>
-                                <include reference="TQD-nc-ONP"/>
-                                <include reference="7Dd-Df-3jo"/>
+                                <include reference="1WH-nk-GVb"/>
+                                <include reference="Nxm-O8-KEo"/>
+                                <include reference="XNV-Tj-0aI"/>
+                                <include reference="ccl-EK-t51"/>
+                                <include reference="iuu-j4-VJd"/>
+                                <include reference="wuv-Ec-Tvh"/>
+                                <include reference="6x1-5d-wXE"/>
+                                <include reference="cuq-IV-LlG"/>
+                                <include reference="m9U-gM-qxK"/>
+                                <include reference="pVM-mE-bbj"/>
+                                <include reference="8aD-pE-VDk"/>
+                                <include reference="d2D-vA-YhO"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="AVButton" destination="Atm-iO-cUJ" id="agn-ce-uDl"/>
+                        <outlet property="audioButton" destination="IgB-5B-aYq" id="B0s-il-HGj"/>
                         <outlet property="captureButton" destination="yGq-sP-gxH" id="ZWz-Di-E7V"/>
+                        <outlet property="pyramidButton" destination="J1W-2H-6vd" id="L5s-w9-SF1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="93" y="156"/>
+            <point key="canvasLocation" x="81" y="138"/>
         </scene>
     </scenes>
     <resources>
         <image name="AVButtonVideo" width="96" height="48"/>
-        <image name="CaptureButton" width="50" height="50"/>
+        <image name="AudioOff" width="72" height="144"/>
+        <image name="CaptureButton" width="174" height="174"/>
+        <image name="PyramidClosed" width="96" height="96"/>
     </resources>
 </document>

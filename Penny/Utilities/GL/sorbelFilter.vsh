@@ -9,4 +9,4 @@ void main() {
     gl_Position = position;
     //vTextureCoord = (uSTMatrix * aTextureCoord).xy;
     calcTexCoord = texturecoordinate.xy;
-  
+}

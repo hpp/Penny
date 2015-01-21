@@ -15,10 +15,13 @@ class PennyViewController: UIViewController, RosyWriterCapturePipelineDelegate {
 
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var AVButton: UIButton!
+    @IBOutlet weak var audioButton: UIButton!
+    @IBOutlet weak var pyramidButton: UIButton!
     var buttonArray : [UIButton]!
     
     var _addedObservers : Bool?
     var _recording : Bool?
+    var _cymaticOn : Bool?
     var _backgroundRecordingID : UIBackgroundTaskIdentifier?
     var _allowedToUseGPU : Bool?
 
@@ -48,6 +51,7 @@ class PennyViewController: UIViewController, RosyWriterCapturePipelineDelegate {
         
         _addedObservers = true
         _recording = false
+        _cymaticOn = false //TODO retrieve previous state here
         
         // the willEnterForeground and didEnterBackground notifications are subsequently used to update _allowedToUseGPU
         _allowedToUseGPU = ( UIApplication.sharedApplication().applicationState != UIApplicationState.Background )
@@ -183,6 +187,16 @@ class PennyViewController: UIViewController, RosyWriterCapturePipelineDelegate {
         }
     }
     
+    @IBAction func pyramidButtonPressed(sender: AnyObject) {
+        if ( !_cymaticOn! ) {
+            pyramidButton.setImage(UIImage(named: "PyramidOpen"), forState:UIControlState.Normal)
+            _cymaticOn = true
+        } else {
+            pyramidButton.setImage(UIImage(named: "PyramidClosed"), forState:UIControlState.Normal)
+            _cymaticOn = false
+        }
+        
+    }
     
     @IBAction func captureButtonPressed(sender: AnyObject) {
         if ( _recording! ) {
@@ -206,13 +220,27 @@ class PennyViewController: UIViewController, RosyWriterCapturePipelineDelegate {
         if AVButton.imageForState(UIControlState.Normal) == UIImage(named: "AVButtonVideo") {
             endPreivew()
             AVButton.setImage(UIImage(named: "AVButtonAudio"), forState:UIControlState.Normal)
-            
+            previewView?.hidden = true
         } else {
             startPreview()
             AVButton.setImage(UIImage(named: "AVButtonVideo"), forState:UIControlState.Normal)
-            
+            previewView?.hidden = false
         }
     }
+    
+    @IBAction func audioButtonPressed(sender: AnyObject) {
+        if audioButton.imageForState(UIControlState.Normal) == UIImage(named: "AudioOff") {
+            endPreivew()
+            audioButton.setImage(UIImage(named: "AudioOn"), forState:UIControlState.Normal)
+            capturePipeline?.audioPreviewEnabled = true
+        } else {
+            startPreview()
+            audioButton.setImage(UIImage(named: "AudioOff"), forState:UIControlState.Normal)
+             capturePipeline?.audioPreviewEnabled = false
+        }
+    }
+
+    
     
     
     override func prefersStatusBarHidden() -> Bool {
@@ -228,10 +256,6 @@ class PennyViewController: UIViewController, RosyWriterCapturePipelineDelegate {
         //alertView.otherButtonTitles = nil
         alertView.show()
     }
-    
-    
-    
-
     
     
     func capturePipeline(capturePipeline: RosyWriterCapturePipeline, didStopRunningWithError error: NSError) {

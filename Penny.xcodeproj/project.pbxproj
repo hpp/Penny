@@ -30,11 +30,12 @@
 		4337102E1A52088500D905A0 /* sorbelFilter.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 4337102C1A52088500D905A0 /* sorbelFilter.fsh */; };
 		4337102F1A52088500D905A0 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4337102D1A52088500D905A0 /* TemplateIcon2x.png */; };
 		433710311A52398D00D905A0 /* sorbelFilter.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 433710301A52398D00D905A0 /* sorbelFilter.vsh */; };
+		43A2F6D51A6DBEFA0073C303 /* PennyAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A2F6D41A6DBEFA0073C303 /* PennyAudioManager.m */; };
 		43C17DEE1A2B887D00103306 /* PennyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DED1A2B887D00103306 /* PennyAppDelegate.swift */; };
 		43C17DF11A2B887D00103306 /* Penny.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DEF1A2B887D00103306 /* Penny.xcdatamodeld */; };
 		43C17DF31A2B887D00103306 /* PennyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17DF21A2B887D00103306 /* PennyViewController.swift */; };
 		43C17DF61A2B887D00103306 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C17DF41A2B887D00103306 /* Main.storyboard */; };
-		43C17DF81A2B887D00103306 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C17DF71A2B887D00103306 /* Images.xcassets */; };
+		43C17DF81A2B887D00103306 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C17DF71A2B887D00103306 /* images.xcassets */; };
 		43C17DFB1A2B887D00103306 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C17DF91A2B887D00103306 /* LaunchScreen.xib */; };
 		43C17E071A2B887D00103306 /* PennyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C17E061A2B887D00103306 /* PennyTests.swift */; };
 /* End PBXBuildFile section */
@@ -81,13 +82,15 @@
 		4337102C1A52088500D905A0 /* sorbelFilter.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sorbelFilter.fsh; sourceTree = "<group>"; };
 		4337102D1A52088500D905A0 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
 		433710301A52398D00D905A0 /* sorbelFilter.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sorbelFilter.vsh; sourceTree = "<group>"; };
+		43A2F6D41A6DBEFA0073C303 /* PennyAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PennyAudioManager.m; sourceTree = "<group>"; };
+		43A2F6D61A6DBF140073C303 /* PennyAudioManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PennyAudioManager.h; sourceTree = "<group>"; };
 		43C17DE81A2B887D00103306 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C17DEC1A2B887D00103306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43C17DED1A2B887D00103306 /* PennyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyAppDelegate.swift; sourceTree = "<group>"; };
 		43C17DF01A2B887D00103306 /* Penny.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Penny.xcdatamodel; sourceTree = "<group>"; };
 		43C17DF21A2B887D00103306 /* PennyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PennyViewController.swift; sourceTree = "<group>"; };
 		43C17DF51A2B887D00103306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		43C17DF71A2B887D00103306 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		43C17DF71A2B887D00103306 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		43C17DFA1A2B887D00103306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		43C17E001A2B887D00103306 /* PennyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PennyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C17E051A2B887D00103306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,6 +164,8 @@
 				43370FF51A3BB86F00D905A0 /* RosyWriterOpenGLRenderer.m */,
 				43370FF61A3BB86F00D905A0 /* RosyWriterRenderer.h */,
 				43370FF91A3BB86F00D905A0 /* Utilities */,
+				43A2F6D61A6DBF140073C303 /* PennyAudioManager.h */,
+				43A2F6D41A6DBEFA0073C303 /* PennyAudioManager.m */,
 			);
 			name = RosyWriter;
 			sourceTree = "<group>";
@@ -211,7 +216,7 @@
 				4337100E1A3BC3AC00D905A0 /* -Bridging-Header.h */,
 				4337100D1A3BB87F00D905A0 /* RosyWriter */,
 				43C17DF41A2B887D00103306 /* Main.storyboard */,
-				43C17DF71A2B887D00103306 /* Images.xcassets */,
+				43C17DF71A2B887D00103306 /* images.xcassets */,
 				43C17DF91A2B887D00103306 /* LaunchScreen.xib */,
 				43C17DEF1A2B887D00103306 /* Penny.xcdatamodeld */,
 				43C17DEB1A2B887D00103306 /* Supporting Files */,
@@ -328,7 +333,7 @@
 				43C17DF61A2B887D00103306 /* Main.storyboard in Resources */,
 				4337102B1A51F1C300D905A0 /* myFilter.vsh in Resources */,
 				43C17DFB1A2B887D00103306 /* LaunchScreen.xib in Resources */,
-				43C17DF81A2B887D00103306 /* Images.xcassets in Resources */,
+				43C17DF81A2B887D00103306 /* images.xcassets in Resources */,
 				433710311A52398D00D905A0 /* sorbelFilter.vsh in Resources */,
 				4337102E1A52088500D905A0 /* sorbelFilter.fsh in Resources */,
 				433710291A51F1B300D905A0 /* myFilter.fsh in Resources */,
@@ -359,6 +364,7 @@
 				4337100C1A3BB86F00D905A0 /* OpenGLPixelBufferView.m in Sources */,
 				4337100B1A3BB86F00D905A0 /* MovieRecorder.m in Sources */,
 				43C17DEE1A2B887D00103306 /* PennyAppDelegate.swift in Sources */,
+				43A2F6D51A6DBEFA0073C303 /* PennyAudioManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

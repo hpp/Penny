@@ -67,6 +67,8 @@
 
 @property(readwrite) BOOL renderingEnabled; // When set to false the GPU will not be used after the setRenderingEnabled: call returns.
 
+@property(readwrite) BOOL audioPreviewEnabled;
+
 @property(readwrite) AVCaptureVideoOrientation recordingOrientation; // client can set the orientation for the recorded movie
 
 - (CGAffineTransform)transformFromVideoBufferOrientationToOrientation:(AVCaptureVideoOrientation)orientation withAutoMirroring:(BOOL)mirroring; // only valid after startRunning has been called

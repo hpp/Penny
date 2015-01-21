@@ -55,11 +55,14 @@
 
 #import "MovieRecorder.h"
 
+#import "PennyAudioManager.h"
+
 #import <CoreMedia/CMBufferQueue.h>
 #import <CoreMedia/CMAudioClock.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <ImageIO/CGImageProperties.h>
 #import <UIKit/UIKit.h>
+
 
 #include <objc/runtime.h> // for objc_loadWeak() and objc_storeWeak()
 
@@ -77,7 +80,7 @@
 
 #define RETAINED_BUFFER_COUNT 6
 
-#define RECORD_AUDIO 0
+#define RECORD_AUDIO 1
 
 #define LOG_STATUS_TRANSITIONS 0
 
@@ -116,6 +119,8 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 	RosyWriterRecordingStatus _recordingStatus;
 	
 	UIBackgroundTaskIdentifier _pipelineRunningTask;
+    
+    PennyAudioManager *_audioManager;
 }
 
 @property(nonatomic, retain) __attribute__((NSObject)) CVPixelBufferRef currentPreviewPixelBuffer;
@@ -142,13 +147,13 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 		
 		_recordingURL = [[NSURL alloc] initFileURLWithPath:[NSString pathWithComponents:@[NSTemporaryDirectory(), @"Movie.MOV"]]];
 		
-		_sessionQueue = dispatch_queue_create( "com.apple.sample.capturepipeline.session", DISPATCH_QUEUE_SERIAL );
+		_sessionQueue = dispatch_queue_create( "io.hpp.penny.capturepipeline.session", DISPATCH_QUEUE_SERIAL );
 		
 		// In a multi-threaded producer consumer system it's generally a good idea to make sure that producers do not get starved of CPU time by their consumers.
 		// In this app we start with VideoDataOutput frames on a high priority queue, and downstream consumers use default priority queues.
 		// Audio uses a default priority queue because we aren't monitoring it live and just want to get it into the movie.
 		// AudioDataOutput can tolerate more latency than VideoDataOutput as its buffers aren't allocated out of a fixed size pool.
-		_videoDataOutputQueue = dispatch_queue_create( "com.apple.sample.capturepipeline.video", DISPATCH_QUEUE_SERIAL );
+		_videoDataOutputQueue = dispatch_queue_create( "io.hpp.penny.capturepipeline.video", DISPATCH_QUEUE_SERIAL );
 		dispatch_set_target_queue( _videoDataOutputQueue, dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0 ) );
 		
 // USE_XXX_RENDERER is set in the project's build settings for each target
@@ -163,6 +168,10 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 #endif
 				
 		_pipelineRunningTask = UIBackgroundTaskInvalid;
+        
+        _audioManager = [[PennyAudioManager alloc] init];
+        
+        _audioPreviewEnabled = false;
 	}
 	return self;
 }
@@ -269,6 +278,8 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 		// Client must stop us running before we can be deallocated
 		[self applicationWillEnterForeground];
 	}];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(captureSessionRTErrorNotification:) name:AVCaptureSessionRuntimeErrorNotification object:nil];
 	
 #if RECORD_AUDIO
 	/* Audio */
@@ -277,19 +288,19 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 	if ( [_captureSession canAddInput:audioIn] ) {
 		[_captureSession addInput:audioIn];
 	}
-	[audioIn release];
+	//[audioIn release];
 	
 	AVCaptureAudioDataOutput *audioOut = [[AVCaptureAudioDataOutput alloc] init];
 	// Put audio on its own queue to ensure that our video processing doesn't cause us to drop audio
-	dispatch_queue_t audioCaptureQueue = dispatch_queue_create( "com.apple.sample.capturepipeline.audio", DISPATCH_QUEUE_SERIAL );
+	dispatch_queue_t audioCaptureQueue = dispatch_queue_create( "io.hpp.penny.capturepipeline.audio", DISPATCH_QUEUE_SERIAL );
 	[audioOut setSampleBufferDelegate:self queue:audioCaptureQueue];
-	[audioCaptureQueue release];
+	//[audioCaptureQueue release];
 	
 	if ( [_captureSession canAddOutput:audioOut] ) {
 		[_captureSession addOutput:audioOut];
 	}
 	_audioConnection = [audioOut connectionWithMediaType:AVMediaTypeAudio];
-	[audioOut release];
+	//[audioOut release];
 #endif // RECORD_AUDIO
 	
 	/* Video */
@@ -383,6 +394,10 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 		//[_audioCompressionSettings release];
 		_audioCompressionSettings = nil;
 	}
+}
+
+- (void)captureSessionRTErrorNotification:(NSNotification *)note{
+    NSLog( @"Capture Session RT Error: %@", note.name );
 }
 
 - (void)captureSessionNotification:(NSNotification *)notification
@@ -624,6 +639,8 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 	else if ( connection == _audioConnection )
 	{
 		self.outputAudioFormatDescription = formatDescription;
+        
+        [self handleAudioSampleBuffer:sampleBuffer];
 		
 		@synchronized( self ) {
 			if ( _recordingStatus == RosyWriterRecordingStatusRecording ) {
@@ -672,6 +689,24 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 	}
 }
 
+- (void)handleAudioSampleBuffer:(CMSampleBufferRef)buffer {
+    
+    @synchronized( _audioManager ){
+        if ( _audioPreviewEnabled ) {
+            if ( !_audioManager.initialized ){
+                //set up Audio Manager on new thread will insure callback is called on a none blocking thread
+                [_audioManager setUp:self.outputAudioFormatDescription  cmBufferRef:buffer];
+            } else {
+                [_audioManager postAudio:buffer];
+            }
+        } else {
+            if ( _audioManager.initialized ){
+                [_audioManager tearDown];
+            }
+        }
+    }
+}
+
 #pragma mark Recording
 
 - (void)startRecording
@@ -696,7 +731,7 @@ typedef NS_ENUM( NSInteger, RosyWriterRecordingStatus )
 
 	[recorder addVideoTrackWithSourceFormatDescription:self.outputVideoFormatDescription transform:videoTransform settings:_videoCompressionSettings];
 	
-	dispatch_queue_t callbackQueue = dispatch_queue_create( "com.apple.sample.capturepipeline.recordercallback", DISPATCH_QUEUE_SERIAL ); // guarantee ordering of callbacks with a serial queue
+	dispatch_queue_t callbackQueue = dispatch_queue_create( "io.hpp.penny.capturepipeline.recordercallback", DISPATCH_QUEUE_SERIAL ); // guarantee ordering of callbacks with a serial queue
 	[recorder setDelegate:self callbackQueue:callbackQueue];
 	//[callbackQueue release];
 	self.recorder = recorder;
